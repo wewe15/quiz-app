@@ -53,7 +53,7 @@ body {
     list-style: none;
 }
 
-.question li {
+.question option {
     width: 100%;
     border: 3px solid whitesmoke;
     border-radius: 20px;
@@ -62,7 +62,7 @@ body {
     font-size: 1.2em;
 }
 
-.question li:hover {
+.question option:hover {
     background: #ff9933;;
     cursor: pointer;
 }
@@ -79,3 +79,13 @@ body {
     background: #ff9933;;
     cursor: pointer;
 }
+
+/* start message */
+.right{
+    color: green;
+}
+
+.wrong{
+    color: red;
+}
+/* end message */

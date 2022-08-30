@@ -5,6 +5,7 @@ function App() {
   const [words, setWords] = useState([]);
   const [currentWord, setCurrentWord] = useState(0);
   const [score, setScore] = useState(0);
+  const [message, setMessage] = useState("");
   const [showResults, setShowResults] = useState(false);
   const [progress, setProgress] = useState(0);
 
@@ -15,12 +16,21 @@ function App() {
     setProgress((currentWord / words.length) * 100)
   }, [currentWord, words.length])
 
-  const isCorrect = () =>{
-
+  const isCorrect = (event) =>{
+    if (words[currentWord]?.pos === event.target.value) {
+      setScore(score + 1);
+      setMessage("Correct");
+      return true;
+    }
+    setMessage("Wrong answer")
+    return false;
   }
   const nextWord = () => {
+    setMessage("");
     if (currentWord + 1 < words.length){
       setCurrentWord(currentWord + 1);
+    }else {
+      setShowResults(false);
     }
   }
 
@@ -36,12 +46,17 @@ function App() {
             Progress: {progress}%
           </p>
         </div>
+        {message ?
+        <p className={message === "Correct"? "right" : "wrong"}>{ message }</p>
+        :
         <ul>
-          <li onClick={() => isCorrect()}>noun</li>
-          <li onClick={() => isCorrect()}>adverb</li>
-          <li onClick={() => isCorrect()}>adjective</li>
-          <li onClick={() => isCorrect()}>verb</li>
-        </ul>
+          <option onClick={(e) => isCorrect(e)} value="noun">noun</option>
+          <option onClick={(e) => isCorrect(e)} value="adverb">adverb</option>
+          <option onClick={(e) => isCorrect(e)} value="adjective">adjective</option>
+          <option onClick={(e) => isCorrect(e)} value="verb">verb</option>
+        </ul>}
+
+
         <button onClick={() => nextWord()}>Next</button>
       </div>
     </div>
