@@ -15,8 +15,8 @@ app.get('/', function (_req, res) {
     res.send('Hello World!');
 });
 
-app.use(wordsRoutes);
-app.use(rankRoutes);
+wordsRoutes(app);
+rankRoutes(app);
 
 app.use((_req, res) => {
     res.status(404).json({message: 'oh you are lost.'})

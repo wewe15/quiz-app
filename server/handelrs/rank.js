@@ -1,5 +1,7 @@
 import { data } from '../testData.js';
 
+let scores = data.scoresList
+
 const createRank = async (_req, res) => {
     try{
 
