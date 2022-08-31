@@ -83,9 +83,29 @@ body {
 /* start message */
 .right{
     color: green;
+    font-size: 1.3rem;
+    padding: 10px;
 }
 
 .wrong{
     color: red;
+    font-size: 1.3rem;
+    padding: 10px;
 }
 /* end message */
+/* start results */
+.results {
+    margin-top: 10px;
+    padding: 16px;
+}
+
+.results h1 {
+    color: #333366;
+}
+
+.results p {
+    color: #ff9933;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+/* end results */
