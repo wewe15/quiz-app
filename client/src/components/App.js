@@ -3,7 +3,7 @@ import { fetchWords, createRank } from "../api/index";
 
 function App() {
   const [words, setWords] = useState([]);
-  const [currentWord, setCurrentWord] = useState(9);
+  const [currentWord, setCurrentWord] = useState(0);
   const [score, setScore] = useState(0);
   const [rank, setRank] = useState(0);
   const [message, setMessage] = useState("");

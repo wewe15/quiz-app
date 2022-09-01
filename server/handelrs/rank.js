@@ -16,7 +16,7 @@ const getRank = (arr, num) => {
     return rank
 }
 
-const createRank = async (req, res) => {
+const createRank = (req, res) => {
     try{
         const score  = req.body.score
 

@@ -7,16 +7,38 @@ const shuffleArray = arr => {
         let randomIdx = Math.floor(Math.random() * arr.length);
         [arr[i], arr[randomIdx]] = [arr[randomIdx], arr[i]];
     }
+
     return arr
 }
 
-const findAll = async (_req, res) => {
+const groupBy = (array, property) => {
+    return array.reduce((acc, obj) => {
+      const key = obj[property];
+      acc[key] = acc[key] || [];
+      acc[key].push(obj);
+
+      return acc;
+    }, {}); // inital value for acc
+}
+
+const findAll = (_req, res) => {
     try{
-        let randWords = await shuffleArray(words.slice(0, 10));
+        const randWords = shuffleArray(words.slice(0, 6));
+
+        const groupWords = groupBy(words, "pos");
+        const adverbWords = shuffleArray(groupWords.adverb.slice(0, 1))
+        const verbWords = shuffleArray(groupWords.verb.slice(0, 1))
+        const nounWords = shuffleArray(groupWords.noun.slice(0, 1))
+        const adjectiveWords = shuffleArray(groupWords.adjective.slice(0, 1))
 
         if (!randWords) return res.status(404).json("Words Not Found");
 
-        res.status(200).json(randWords)
+        res.status(200).json(randWords.concat(
+            verbWords,
+            nounWords,
+            adjectiveWords,
+            adverbWords
+        ))
     } catch (err){
         res.status(400).json(err);
     }
