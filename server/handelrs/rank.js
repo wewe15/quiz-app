@@ -1,20 +1,7 @@
 import { data } from '../testData.js';
+import { getRank } from './utils.js'
 
 let scores = data.scoresList;
-
-const getRank = (arr, num) => {
-    let count = 0;
-
-    for (let i = 0; i < arr.length; i++){
-        let score = arr[i];
-
-        if (score < num) count++;
-    }
-
-    let rank = Number(((count / arr.length) * 100).toFixed(2))
-
-    return rank
-}
 
 const createRank = (req, res) => {
     try{

@@ -1,25 +1,7 @@
 import { data } from '../testData.js';
+import { shuffleArray, groupBy } from './utils.js'
 
 let words = data.wordList
-
-const shuffleArray = arr => {
-    for (let i = 0; i < arr.length; i++){
-        let randomIdx = Math.floor(Math.random() * arr.length);
-        [arr[i], arr[randomIdx]] = [arr[randomIdx], arr[i]];
-    }
-
-    return arr
-}
-
-const groupBy = (array, property) => {
-    return array.reduce((acc, obj) => {
-      const key = obj[property];
-      acc[key] = acc[key] || [];
-      acc[key].push(obj);
-
-      return acc;
-    }, {}); // inital value for acc
-}
 
 const findAll = (_req, res) => {
     try{
